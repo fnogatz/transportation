@@ -1,0 +1,3 @@
+"stop_id","stop_code","stop_name","location_type","parent_station","stop_lon","stop_lat"
+900170101,"Adenauerbrücke","Adenauerbrücke",0,9001701,9.988553888888889,48.3887511111111
+900116202,"Albstraße","Albstraße",0,9001162,9.98619888888889,48.4352952777778

@@ -1,0 +1,26 @@
+{
+  "name": "transportation",
+  "version": "0.0.1",
+  "description": "Import GTFS into a semantic model",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/tap/bin/tap.js ./test"
+  },
+  "keywords": [
+    "GTFS",
+    "transportation",
+    "transit"
+  ],
+  "author": "Falco Nogatz <fnogatz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "concat-stream": "^1.4.6",
+    "csv": "^0.4.1",
+    "require-all": "^1.0.0",
+    "tconsole": "^0.2.0"
+  },
+  "devDependencies": {
+    "tap": "^0.4.13"
+  }
+}

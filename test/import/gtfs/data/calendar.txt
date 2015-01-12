@@ -1,0 +1,3 @@
+"service_id","monday","tuesday","wednesday","thursday","friday","saturday","sunday","start_date","end_date"
+"Na","1","1","1","1","0","0","0","20121209","20131231"
+"Nb","0","0","0","0","0","0","1","20121209","20131231"
