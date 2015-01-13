@@ -1,6 +1,6 @@
 # transportation
 
-![Screenshot](https://raw.github.com/fnogatz/transportation/master/screenshot.png)
+![Screenshot](screenshot.png)
 
 transportation is a library to display and manage public transport data. It is created to consume and produce [GTFS](https://developers.google.com/transit/gtfs/reference) data.
 
