@@ -4,7 +4,7 @@
   "description": "Import GTFS into a semantic model",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/tap/bin/tap.js ./test"
+    "test": "tap ./test"
   },
   "keywords": [
     "GTFS",
