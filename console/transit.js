@@ -17,7 +17,6 @@ module.exports = {
   test: function() {
     return this instanceof Transit;
   },
-  horizontal: true,
 };
 
 

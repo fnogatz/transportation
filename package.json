@@ -22,7 +22,7 @@
     "concat-stream": "^1.4.6",
     "csv": "^0.4.1",
     "require-all": "^1.0.0",
-    "tconsole": "^0.2.0"
+    "tconsole": "^0.3.0"
   },
   "devDependencies": {
     "tap": "^0.4.13"

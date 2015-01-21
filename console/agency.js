@@ -9,6 +9,11 @@ module.exports = {
     'Language': function() { return this.language; },
     '# Routes': function() { return this.routes.length; }
   },
+  defaultFields: [
+    'ID',
+    'Name',
+    '# Routes',
+  ],
   test: function() {
     return this instanceof Agency;
   }
