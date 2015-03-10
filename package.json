@@ -1,6 +1,6 @@
 {
   "name": "transportation",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Import GTFS into a semantic model",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "require-all": "^1.0.0",
     "tconsole": "^0.3.0",
     "turf-distance": "^1.0.1",
+    "turf-featurecollection": "^1.0.1",
     "turf-line-distance": "^1.0.0",
     "turf-linestring": "^1.0.1",
     "turf-point": "^2.0.0",
