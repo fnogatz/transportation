@@ -19,10 +19,17 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "camelcase": "^1.0.2",
     "concat-stream": "^1.4.6",
     "csv": "^0.4.1",
+    "moment": "^2.9.0",
     "require-all": "^1.0.0",
-    "tconsole": "^0.3.0"
+    "tconsole": "^0.3.0",
+    "turf-distance": "^1.0.1",
+    "turf-line-distance": "^1.0.0",
+    "turf-linestring": "^1.0.1",
+    "turf-point": "^2.0.0",
+    "turf-point-on-line": "^1.0.1"
   },
   "devDependencies": {
     "tap": "^0.4.13"
