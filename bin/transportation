@@ -17,7 +17,8 @@ program
   .option('-s, --span <a>..<b>', 'Time span', span)
   .option('-l, --dates <dates>', 'Dates', list)
   .option('-m, --mongo', 'Use MongoDB Extended JSON')
-  .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt, 2)
+  .option('-n, --datasets <n>', 'Datasets to export', parseInt)
+  .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
   .parse(process.argv);
 
 
@@ -27,6 +28,12 @@ var dates = [ program.date ];
 
 if (program.array) {
   var objects = [];
+}
+if (program.datasets) {
+  var datasets = program.datasets;
+}
+if (program.indentation === undefined) {
+  program.indentation = 2;
 }
 
 
@@ -44,6 +51,10 @@ transit.importGTFS(dir, function(err) {
 
   var trips = transit.trips;
   trips.forEach(function(trip) {
+    if (program.datasets && datasets === 0) {
+      return;
+    }
+
     var positions;
     var featureCollection;
 
@@ -79,6 +90,13 @@ transit.importGTFS(dir, function(err) {
       }
       else {
         print(object);
+      }
+
+      if (program.datasets) {
+        datasets--;
+        if (datasets === 0) {
+          return;
+        }
       }
     });
   });
