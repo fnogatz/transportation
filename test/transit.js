@@ -1,20 +1,18 @@
-var test = require('tap').test;
+var test = require('tap').test
 
-var Transit = require('../lib/transit');
+var Transit = require('../lib/transit')
 
+test('creation', function (t) {
+  Transit()
 
-test('creation', function(t) {
-  var transit = new Transit();
+  t.end()
+})
 
-  t.end();
-});
+test('Transit.prototype.importGTFS', function (t) {
+  var transit = new Transit()
 
+  var importGTFS = transit.importGTFS
+  t.type(importGTFS, 'function')
 
-test('Transit.prototype.importGTFS', function(t) {
-  var transit = new Transit();
-
-  var importGTFS = transit.importGTFS;
-  t.type(importGTFS, "function");
-
-  t.end();
-});
+  t.end()
+})

@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": "./bin/transportation",
   "scripts": {
-    "test": "tap ./test"
+    "standard": "standard",
+    "test": "npm run-script standard && tap ./test"
   },
   "keywords": [
     "GTFS",
@@ -37,6 +38,7 @@
     "turf-point-on-line": "^1.0.1"
   },
   "devDependencies": {
+    "standard": "^2.11.0",
     "tap": "^0.4.13"
   }
 }

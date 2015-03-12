@@ -1,20 +1,20 @@
-var Stop = require('../lib/stop');
+var Stop = require('../lib/stop')
 
 module.exports = {
   fields: {
-    'ID': function() { return this.id; },
-    'Code': function() { return this.code; },
-    'Name': function() { return this.name; },
-    'Lat': function() { return this.lat; },
-    'Lon': function() { return this.lon; },
+    'ID': function () { return this.id },
+    'Code': function () { return this.code },
+    'Name': function () { return this.name },
+    'Lat': function () { return this.lat },
+    'Lon': function () { return this.lon }
   },
   defaultFields: [
     'ID',
     'Code',
     'Lat',
-    'Lon',
+    'Lon'
   ],
-  test: function() {
-    return this instanceof Stop;
-  },
-};
+  test: function () {
+    return this instanceof Stop
+  }
+}

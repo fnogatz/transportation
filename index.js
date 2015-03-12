@@ -1,1 +1,1 @@
-module.exports = require('./lib/transit');
+module.exports = require('./lib/transit')

@@ -4,5 +4,5 @@ module.exports = {
     'Short Name',
     'Long Name',
     '# Trips'
-  ],
-};
+  ]
+}
