@@ -121,10 +121,10 @@ console.log('#1', val.split(','));
 
 
 function prefixDates(positions, date) {
-  return positions.map(function(position) {
-    var date = moment(moment(date).format('YYYY-MM-DD')+' '+position.time, 'YYYY-MM-DD HH:mm.SSS');
-    position.time = date.toDate();
-
+  var res = positions.map(function(position) {
+    var dateStr = moment(date).format('YYYY-MM-DD')+' '+position.time;
+    position.time = new Date(dateStr)
     return position;
   });
+  return res;
 }
