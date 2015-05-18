@@ -71,7 +71,7 @@ transit.importGTFS(dir, function(err) {
       var featureCollection = geo.toGeoJSON.call(prefixedPositions);
 
       var object = {
-        _id: trip.id,
+        _id: date+'_'+trip.id,
         entities: {
           route: {
             id: trip.route.id,
