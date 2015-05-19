@@ -27,7 +27,6 @@
     "concat-stream": "^1.4.6",
     "csv": "^0.4.1",
     "moment": "^2.9.0",
-    "mongodb-extended-json": "^1.1.2",
     "require-all": "^1.0.0",
     "tconsole": "^0.3.0",
     "turf-distance": "^1.0.1",

@@ -3,7 +3,6 @@
 var spinner = require('char-spinner');
 var program = require('commander');
 var moment = require('moment');
-var EJSON = require('mongodb-extended-json');
 var Transit = require('../index');
 var geo = require('../lib/utils/geo');
 
@@ -12,19 +11,15 @@ spinner();
 
 program
   .usage('[options] <gtfs>')
+  .description('Create newline-separated GeoJSON FeatureCollections of trips\' positions')
   .option('-a, --array', 'Export as JSON Array')
   .option('-d, --date <n>', 'Date', moment)
-  .option('-s, --span <a>..<b>', 'Time span', span)
-  .option('-l, --dates <dates>', 'Dates', list)
-  .option('-m, --mongo', 'Use MongoDB Extended JSON')
-  .option('-n, --datasets <n>', 'Datasets to export', parseInt)
+  .option('-n, --datasets <n>', 'Number of datasets to export', parseInt)
   .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
   .parse(process.argv);
 
-
 var dir = program.args[0];
-var dates = [ program.date ];
-
+var dates = [program.date];
 
 if (program.array) {
   var objects = [];
@@ -46,8 +41,9 @@ function print(obj) {
 
 var transit = new Transit();
 transit.importGTFS(dir, function(err) {
-  if (err)
+  if (err) {
     throw err;
+  }
 
   var trips = transit.trips;
   trips.forEach(function(trip) {
