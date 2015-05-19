@@ -1,0 +1,2 @@
+"stop_id","stop_name","stop_desc","stop_lat","stop_lon","location_type","parent_station"
+"lhts","Laurel Heights","Laurel Heights Building (3333 California)","37.786592","-122.448552","0",""
