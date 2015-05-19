@@ -1,79 +1,74 @@
 #!/usr/bin/env node
 
-var spinner = require('char-spinner');
-var program = require('commander');
-var Transit = require('../index');
-var turf = require('../lib/utils/turf');
-var geo = require('../lib/utils/geo');
+var spinner = require('char-spinner')
+var program = require('commander')
+var Transit = require('../index')
+var turf = require('../lib/utils/turf')
+var geo = require('../lib/utils/geo')
 
-
-spinner();
+spinner()
 
 program
   .usage('[options] <gtfs>')
   .option('-a, --array', 'Export as JSON Array')
   .option('-n, --datasets <n>', 'Datasets to export', parseInt)
   .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
-  .parse(process.argv);
+  .parse(process.argv)
 
-
-var dir = program.args[0];
-
+var dir = program.args[0]
 
 if (program.array) {
-  var objects = [];
+  var objects = []
 }
 if (program.datasets) {
-  var datasets = program.datasets;
+  var datasets = program.datasets
 }
 if (program.indentation === undefined) {
-  program.indentation = 2;
+  program.indentation = 2
 }
 
+function print (obj) {
+  var stringify = JSON.stringify
 
-function print(obj) {
-  var stringify = JSON.stringify;
-
-  console.log(stringify(obj, null, Array(program.indentation+1).join(' ')));
+  console.log(stringify(obj, null, Array(program.indentation + 1).join(' ')))
 }
 
+var transit = new Transit()
+transit.importGTFS(dir, function (err) {
+  if (err) {
+    throw err
+  }
 
-var transit = new Transit();
-transit.importGTFS(dir, function(err) {
-  if (err)
-    throw err;
-
-  var shapes = transit.shapes;
-  shapes.forEach(function(shape) {
+  var shapes = transit.shapes
+  shapes.forEach(function (shape) {
     if (program.datasets && datasets === 0) {
-      return;
+      return
     }
 
-    var linestring = turf.linestring(shape.map(function(position) {
+    var linestring = turf.linestring(shape.map(function (position) {
       return geo.toLonLat(position)
-    }));
+    }))
 
     var object = {
       _id: shape.id,
       loc: linestring
-    };
+    }
 
     if (program.array) {
-      objects.push(object);
-    }
-    else {
-      print(object);
+      objects.push(object)
+    } else {
+      print(object)
     }
 
     if (program.datasets) {
-      datasets--;
+      datasets--
       if (datasets === 0) {
-        return;
+        return
       }
     }
-  });
+  })
 
   if (program.array) {
-    print(objects);
+    print(objects)
   }
-});
+})

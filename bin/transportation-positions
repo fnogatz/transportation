@@ -1,73 +1,67 @@
 #!/usr/bin/env node
 
-var spinner = require('char-spinner');
-var program = require('commander');
-var moment = require('moment');
-var Transit = require('../index');
-var geo = require('../lib/utils/geo');
+var spinner = require('char-spinner')
+var program = require('commander')
+var moment = require('moment')
+var Transit = require('../index')
+var geo = require('../lib/utils/geo')
 
-
-spinner();
+spinner()
 
 program
   .usage('[options] <gtfs>')
-  .description('Create newline-separated GeoJSON FeatureCollections of trips\' positions')
+  .description("Create newline-separated GeoJSON FeatureCollections of trips' positions")
   .option('-a, --array', 'Export as JSON Array')
   .option('-d, --date <n>', 'Date', moment)
   .option('-n, --datasets <n>', 'Number of datasets to export', parseInt)
   .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
-  .parse(process.argv);
+  .parse(process.argv)
 
-var dir = program.args[0];
-var dates = [program.date];
+var dir = program.args[0]
+var dates = [program.date]
 
 if (program.array) {
-  var objects = [];
+  var objects = []
 }
 if (program.datasets) {
-  var datasets = program.datasets;
+  var datasets = program.datasets
 }
 if (program.indentation === undefined) {
-  program.indentation = 2;
+  program.indentation = 2
 }
 
-
-function print(obj) {
-  var stringify = program.mongo ? EJSON.stringify : JSON.stringify;
-
-  console.log(stringify(obj, null, Array(program.indentation+1).join(' ')));
+function print (obj) {
+  console.log(JSON.stringify(obj, null, Array(program.indentation + 1).join(' ')))
 }
 
-
-var transit = new Transit();
-transit.importGTFS(dir, function(err) {
+var transit = new Transit()
+transit.importGTFS(dir, function (err) {
   if (err) {
-    throw err;
+    throw err
   }
 
-  var trips = transit.trips;
-  trips.forEach(function(trip) {
+  var trips = transit.trips
+  trips.forEach(function (trip) {
     if (program.datasets && datasets === 0) {
-      return;
+      return
     }
 
-    var positions;
-    var featureCollection;
+    var positions
 
-    dates.forEach(function(date) {
+    dates.forEach(function (date) {
       if (!trip.service.operating(date)) {
-        return;
+        return
       }
 
       if (!positions) {
-        positions = trip.positions;
+        positions = trip.positions
       }
 
-      var prefixedPositions = prefixDates(positions, date);
-      var featureCollection = geo.toGeoJSON.call(prefixedPositions);
+      var prefixedPositions = prefixDates(positions, date)
+      var featureCollection = geo.toGeoJSON.call(prefixedPositions)
 
       var object = {
-        _id: date+'_'+trip.id,
+        _id: date + '_' + trip.id,
         entities: {
           route: {
             id: trip.route.id,
@@ -85,42 +79,30 @@ transit.importGTFS(dir, function(err) {
       }
 
       if (program.array) {
-        objects.push(object);
-      }
-      else {
-        print(object);
+        objects.push(object)
+      } else {
+        print(object)
       }
 
       if (program.datasets) {
-        datasets--;
+        datasets--
         if (datasets === 0) {
-          return;
+          return
         }
       }
-    });
-  });
+    })
+  })
 
   if (program.array) {
-    print(objects);
+    print(objects)
   }
-});
+})
 
-
-function span(val) {
-  return val.split('..').map(moment);
-}
-
-function list(val) {
-console.log('#1', val.split(','));
-  return val.split(',').map(moment);
-}
-
-
-function prefixDates(positions, date) {
-  var res = positions.map(function(position) {
-    var dateStr = moment(date).format('YYYY-MM-DD')+' '+position.time;
+function prefixDates (positions, date) {
+  var res = positions.map(function (position) {
+    var dateStr = moment(date).format('YYYY-MM-DD') + ' ' + position.time
     position.time = new Date(dateStr)
-    return position;
-  });
-  return res;
+    return position
+  })
+  return res
 }

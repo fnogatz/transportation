@@ -5,8 +5,9 @@
   "main": "index.js",
   "bin": "./bin/transportation",
   "scripts": {
-    "standard": "standard",
-    "test": "npm run-script standard && tap ./test"
+    "standard": "standard && standard ./bin/*",
+    "tap": "tap ./test",
+    "test": "npm run standard && npm run tap"
   },
   "keywords": [
     "GTFS",
