@@ -14,11 +14,5 @@ test('Transit.prototype.importGTFS', function (t) {
   var importGTFS = transit.importGTFS
   t.type(importGTFS, 'function')
 
-  importGTFS.call(transit, './import/gtfs/data/no-agencyid-in-routes', function onEnd () {
-    t.equal(transit.agencies.length, 1)
-    t.ok(transit.agencies.ucsf)
-    t.ok(transit.agencies.ucsf.routes.black)
-
-    t.end()
-  })
+  t.end()
 })

@@ -12,6 +12,28 @@ test('import routes', function (t) {
   }))
 
   importRoutes('./data/generic/routes.txt', transit, function onEnd () {
+    testRoutes(transit, t)
+
+    t.end()
+  })
+
+  t.test('no agency ID specified', function (t) {
+    var transit = new Transit()
+    transit.agencies.add(new Agency({
+      id: 'SWU',
+      name: 'SWU'
+    }))
+
+    importRoutes('./data/no-agencyid-in-routes/routes.txt', transit, function onEnd () {
+      testRoutes(transit, t)
+
+      t.end()
+    })
+  })
+
+  t.end()
+
+  function testRoutes (transit, t) {
     t.equal(transit.agencies.SWU.routes.length, 2)
 
     t.ok(transit.agencies.SWU.routes[87001])
@@ -29,7 +51,5 @@ test('import routes', function (t) {
       color: '005DA3',
       textColor: 'FFFFFF'
     })
-
-    t.end()
-  })
+  }
 })

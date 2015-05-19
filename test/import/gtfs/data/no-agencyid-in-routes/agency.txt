@@ -1,2 +1,0 @@
-"agency_id","agency_name","agency_url","agency_timezone"
-"ucsf","UCSF Transportation Services","http://campuslifeservices.ucsf.edu/transportation/","America/Los_Angeles"
