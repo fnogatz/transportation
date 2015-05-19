@@ -7,7 +7,7 @@ var importCalendar = require('../../../lib/import/gtfs/import.calendar')
 test('import calendar dates', function (t) {
   var transit = new Transit()
 
-  importCalendar('./data/calendar.txt', transit, function onEnd () {
+  importCalendar('./data/generic/calendar.txt', transit, function onEnd () {
     t.equal(transit.services.length, 2)
 
     t.ok(transit.services['Na'])
