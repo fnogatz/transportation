@@ -23,7 +23,7 @@ module.exports = {
 
 function getExceptions (exceptions) {
   return ''
-  // TODO
+// TODO
 }
 
 function getOperatingDays (days) {

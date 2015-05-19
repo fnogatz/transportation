@@ -6,7 +6,7 @@ var importAgencies = require('../../../lib/import/gtfs/import.agency')
 test('import agency', function (t) {
   var transit = new Transit()
 
-  importAgencies('./data/generic/agency.txt', transit, function onEnd () {
+  importAgencies(__dirname + '/data/generic/agency.txt', transit, function onEnd () {
     t.equal(transit.agencies.length, 1)
     t.ok(transit.agencies.SWU)
     t.similar(transit.agencies.SWU, {

@@ -6,7 +6,7 @@ var importStops = require('../../../lib/import/gtfs/import.stops')
 test('import stops', function (t) {
   var transit = new Transit()
 
-  importStops('./data/generic/stops.txt', transit, function onEnd () {
+  importStops(__dirname + '/data/generic/stops.txt', transit, function onEnd () {
     t.equal(transit.stops.length, 2)
 
     // check IDs

@@ -11,10 +11,12 @@ test('import routes', function (t) {
     name: 'SWU'
   }))
 
-  importRoutes('./data/generic/routes.txt', transit, function onEnd () {
-    testRoutes(transit, t)
+  t.test('all fields specified', function (t) {
+    importRoutes(__dirname + '/data/generic/routes.txt', transit, function onEnd () {
+      testRoutes(transit, t)
 
-    t.end()
+      t.end()
+    })
   })
 
   t.test('no agency ID specified', function (t) {
@@ -24,7 +26,7 @@ test('import routes', function (t) {
       name: 'SWU'
     }))
 
-    importRoutes('./data/no-agencyid-in-routes/routes.txt', transit, function onEnd () {
+    importRoutes(__dirname + '/data/no-agencyid-in-routes/routes.txt', transit, function onEnd () {
       testRoutes(transit, t)
 
       t.end()

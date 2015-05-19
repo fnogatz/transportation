@@ -19,7 +19,7 @@ test('import stops', function (t) {
 
   var route = transit.agencies.SWU.routes[87907]
 
-  importTrips('./data/generic/trips.txt', transit, function onEnd () {
+  importTrips(__dirname + '/data/generic/trips.txt', transit, function onEnd () {
     t.equal(route.trips.length, 2)
 
     t.similar(route.trips['87907HYs-2830'], {
