@@ -11,7 +11,7 @@ test('import routes', function (t) {
     name: 'SWU'
   }))
 
-  importRoutes('./data/routes.txt', transit, function onEnd () {
+  importRoutes('./data/generic/routes.txt', transit, function onEnd () {
     t.equal(transit.agencies.SWU.routes.length, 2)
 
     t.ok(transit.agencies.SWU.routes[87001])
