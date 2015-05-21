@@ -7,8 +7,8 @@ var importRoutes = require('../../../lib/import/gtfs/import.routes')
 test('import routes', function (t) {
   var transit = new Transit()
   transit.agencies.add(new Agency({
-    id: 'SWU',
-    name: 'SWU'
+    id: 'DTA',
+    name: 'DTA'
   }))
 
   t.test('all fields specified', function (t) {
@@ -22,8 +22,8 @@ test('import routes', function (t) {
   t.test('no agency ID specified', function (t) {
     var transit = new Transit()
     transit.agencies.add(new Agency({
-      id: 'SWU',
-      name: 'SWU'
+      id: 'DTA',
+      name: 'DTA'
     }))
 
     importRoutes(__dirname + '/data/no-agencyid-in-routes/routes.txt', transit, function onEnd () {
@@ -36,23 +36,17 @@ test('import routes', function (t) {
   t.end()
 
   function testRoutes (transit, t) {
-    t.equal(transit.agencies.SWU.routes.length, 3)
+    t.equal(transit.agencies.DTA.routes.length, 5)
 
-    t.ok(transit.agencies.SWU.routes[87001])
-    t.ok(transit.agencies.SWU.routes[87003])
-    t.ok(transit.agencies.SWU.routes[87907])
+    t.ok(transit.agencies.DTA.routes.AB)
+    t.ok(transit.agencies.DTA.routes.BFC)
+    t.ok(transit.agencies.DTA.routes.STBA)
+    t.ok(transit.agencies.DTA.routes.CITY)
+    t.ok(transit.agencies.DTA.routes.AAMV)
 
-    t.similar(transit.agencies.SWU.routes[87001], {
-      shortName: 1,
-      longName: 'Söflingen–Böfingen',
-      color: 'ED1B24',
-      textColor: 'FFFFFF'
-    })
-    t.similar(transit.agencies.SWU.routes[87003], {
-      shortName: 3,
-      longName: 'Wiblingen (Alte Siedlung)–Wissenschaftsstadt ',
-      color: '005DA3',
-      textColor: 'FFFFFF'
+    t.similar(transit.agencies.DTA.routes.AB, {
+      shortName: 10,
+      longName: 'Airport - Bullfrog'
     })
   }
 })

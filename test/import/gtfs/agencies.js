@@ -8,12 +8,12 @@ test('import agency', function (t) {
 
   importAgencies(__dirname + '/data/generic/agency.txt', transit, function onEnd () {
     t.equal(transit.agencies.length, 1)
-    t.ok(transit.agencies.SWU)
-    t.similar(transit.agencies.SWU, {
-      id: 'SWU',
-      name: 'Stadtwerke Ulm',
-      language: 'de',
-      url: 'http://www.swu.de'
+    t.ok(transit.agencies.DTA)
+    t.similar(transit.agencies.DTA, {
+      id: 'DTA',
+      name: 'Demo Transit Authority',
+      url: 'http://google.com',
+      timezone: 'America/Los_Angeles'
     })
 
     t.end()

@@ -1,4 +1,6 @@
-"route_id","route_short_name","route_long_name","route_type","route_color","route_text_color"
-"87001","1","Söflingen–Böfingen","0","ED1B24","FFFFFF"
-"87003","3","Wiblingen (Alte Siedlung)–Wissenschaftsstadt ","3","005DA3","FFFFFF"
-"87907","N7","Ulm ZOB-Wiblingen ","3","E2499B","FFFFFF"
+route_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+AB,10,Airport - Bullfrog,,3,,,
+BFC,20,Bullfrog - Furnace Creek Resort,,3,,,
+STBA,30,Stagecoach - Airport Shuttle,,3,,,
+CITY,40,City,,3,,,
+AAMV,50,Airport - Amargosa Valley,,3,,,

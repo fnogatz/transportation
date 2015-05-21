@@ -10,19 +10,19 @@ test('import calendar dates', function (t) {
   importCalendar(__dirname + '/data/generic/calendar.txt', transit, function onEnd () {
     t.equal(transit.services.length, 2)
 
-    t.ok(transit.services['Na'])
-    t.ok(transit.services['Nb'])
+    t.ok(transit.services['FULLW'])
+    t.ok(transit.services['WE'])
 
     var operating = {
-      monday: ['Na'],
-      tuesday: ['Na'],
-      wednesday: ['Na'],
-      thursday: ['Na'],
-      friday: [],
-      saturday: [],
-      sunday: ['Nb']
+      monday: ['FULLW'],
+      tuesday: ['FULLW'],
+      wednesday: ['FULLW'],
+      thursday: ['FULLW'],
+      friday: ['FULLW'],
+      saturday: ['FULLW', 'WE'],
+      sunday: ['FULLW', 'WE']
     }
-    var services = ['Na', 'Nb']
+    var services = ['FULLW', 'WE']
     services.forEach(function checkService (service) {
       for (var day in operating) {
         if (operating[day].indexOf(service) >= 0) {
@@ -33,10 +33,10 @@ test('import calendar dates', function (t) {
       }
     })
 
-    t.equal(transit.services['Na'].start, '20121209')
-    t.equal(transit.services['Na'].end, '20131231')
-    t.equal(transit.services['Nb'].start, '20121209')
-    t.equal(transit.services['Nb'].end, '20131231')
+    t.equal(transit.services['FULLW'].start, '20070101')
+    t.equal(transit.services['FULLW'].end, '20101231')
+    t.equal(transit.services['WE'].start, '20070101')
+    t.equal(transit.services['WE'].end, '20101231')
 
     t.end()
   })

@@ -9,24 +9,21 @@ test('import stops', function (t) {
   var transit = new Transit()
 
   transit.agencies.add(new Agency({
-    id: 'SWU',
-    name: 'SWU'
+    id: 'DTA',
+    name: 'DTA'
   }))
 
-  transit.agencies.SWU.routes.add(new Route({
+  transit.agencies.DTA.routes.add(new Route({
     longName: 'Some Route'
-  }), 87907)
+  }), 'AAMV')
 
-  var route = transit.agencies.SWU.routes[87907]
+  var route = transit.agencies.DTA.routes['AAMV']
 
-  importTrips(__dirname + '/data/generic/trips.txt', transit, function onEnd () {
-    t.equal(route.trips.length, 2)
+  importTrips(__dirname + '/data/generic/trips.txt.small', transit, function onEnd () {
+    t.equal(route.trips.length, 1)
 
-    t.similar(route.trips['87907HYs-2830'], {
-      headsign: 'Wiblingen (Alte Siedlung)'
-    })
-    t.similar(route.trips['87907RYs-2604'], {
-      headsign: 'Wissenschaftsstadt'
+    t.similar(route.trips['AAMV4'], {
+      headsign: 'to Airport'
     })
 
     t.end()
