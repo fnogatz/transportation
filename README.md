@@ -1,33 +1,50 @@
 # transportation
 
+Import [GTFS](https://developers.google.com/transit/gtfs/reference) data into a semantic model
+
 ![Screenshot](screenshot.png)
 
-transportation is a library to display and manage public transport data. It is created to consume and produce [GTFS](https://developers.google.com/transit/gtfs/reference) data.
-
-
 ## Installation
-
-Use NPM:
 
 ```shell
 $ npm install transportation
 ```
 
-
-## How to use it
-
-You can easily explore the transportation library in the node.js REPL. It provides an own replacement for node's `console` by using [tconsole](https://www.npmjs.com/package/tconsole), so you can inspect the objects by using `require('transportation/console')`:
+## Usage
 
 ```
-var Transit = require('transportation');
-var konsole = require('transportation/console');
-var transit = new Transit();
+var Transit = require('transportation')
+var transit = new Transit()
 
-// Maybe import GTFS?
-// transit.importGTFS(...);
+// import GTFS data
+transit.importGTFS('/path/to/gtfs/dir', function (err) {
+  // have a look at the Transit instance
+  console.log(transit)
+})
+```
 
-// Display some data
-konsole(transit.agencies);
-konsole(transit.stops);
-konsole(transit.services);
+transportation provides a replacement for node's `console` by using [tconsole](https://www.npmjs.com/package/tconsole), so you can inspect the objects in the node.js REPL by using `require('transportation/console')`:
+
+```
+> var konsole = require('transportation/console')
+> konsole(transit)
+┌────────────┬─────┐
+│ Agencies   │ SWU │
+├────────────┼─────┤
+│ # Stops    │ 773 │
+├────────────┼─────┤
+│ # Services │ 14  │
+├────────────┼─────┤
+│ # Shapes   │ 65  │
+└────────────┴─────┘
+> konsole(transit.agencies.SWU.routes)
+┌───────┬────────────┬───────────────────────────────────────────────┬─────────┐
+│ ID    │ Short Name │ Long Name                                     │ # Trips │
+├───────┼────────────┼───────────────────────────────────────────────┼─────────┤
+│ 87001 │ 1          │ Söflingen–Böfingen                            │ 613     │
+├───────┼────────────┼───────────────────────────────────────────────┼─────────┤
+│ 87003 │ 3          │ Wiblingen (Alte Siedlung)–Wissenschaftsstadt  │ 649     │
+├───────┼────────────┼───────────────────────────────────────────────┼─────────┤
+│ 87004 │ 4          │ Grimmelfingen–Kuhberg–Böfingen Süd            │ 590     │
+└───────┴────────────┴───────────────────────────────────────────────┴─────────┘
 ```
