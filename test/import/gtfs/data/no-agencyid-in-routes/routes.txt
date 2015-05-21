@@ -1,3 +1,4 @@
 "route_id","route_short_name","route_long_name","route_type","route_color","route_text_color"
 "87001","1","Söflingen–Böfingen","0","ED1B24","FFFFFF"
 "87003","3","Wiblingen (Alte Siedlung)–Wissenschaftsstadt ","3","005DA3","FFFFFF"
+"87907","N7","Ulm ZOB-Wiblingen ","3","E2499B","FFFFFF"

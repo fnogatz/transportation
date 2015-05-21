@@ -36,10 +36,11 @@ test('import routes', function (t) {
   t.end()
 
   function testRoutes (transit, t) {
-    t.equal(transit.agencies.SWU.routes.length, 2)
+    t.equal(transit.agencies.SWU.routes.length, 3)
 
     t.ok(transit.agencies.SWU.routes[87001])
     t.ok(transit.agencies.SWU.routes[87003])
+    t.ok(transit.agencies.SWU.routes[87907])
 
     t.similar(transit.agencies.SWU.routes[87001], {
       shortName: 1,
