@@ -3,34 +3,37 @@
 var spinner = require('char-spinner')
 var program = require('commander')
 var moment = require('moment')
+var geobuf = require('geobuf')
 var Transit = require('../index')
-var geo = require('../lib/utils/geo')
+var turf = require('../lib/utils/turf')
 
 spinner()
 
 program
   .usage('[options] <gtfs>')
-  .description("Create newline-separated GeoJSON FeatureCollections of trips' positions")
-  .option('-a, --array', 'Export as JSON Array')
-  .option('-d, --date <n>', 'Date', moment)
+  .description("Create newline-separated GeoJSON Features of all the trips' positions")
+  .option('-a, --array', 'Export as JSON Array instead of newline-separated datasets')
+  .option('-b, --geobuf', 'Export as Geobuf')
+  .option('-d, --date <n>', 'Date (default: today)')
   .option('-n, --datasets <n>', 'Number of datasets to export', parseInt)
-  .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
+  .option('-i, --indentation <spaces>', 'Set indentation level (default: 0)', parseInt)
   .parse(process.argv)
+
+var objects = []
+var datasets = program.datasets || null
+program.indentation = program.indentation === undefined ? 0 : program.indentation
+program.date = program.date || new Date().toISOString().slice(0,10) // YYYY-MM-DD
 
 var dir = program.args[0]
 var dates = [program.date]
 
-if (program.array) {
-  var objects = []
-}
-if (program.datasets) {
-  var datasets = program.datasets
-}
-if (program.indentation === undefined) {
-  program.indentation = 2
-}
-
 function print (obj) {
+  if (program.geobuf) {
+    var buf = geobuf.featureToGeobuf(obj)
+    process.stdout.write(buf.encode().toBuffer())
+    return
+  }
+
   console.log(JSON.stringify(obj, null, Array(program.indentation + 1).join(' ')))
 }
 
@@ -46,42 +49,34 @@ transit.importGTFS(dir, function (err) {
       return
     }
 
-    var positions
-
     dates.forEach(function (date) {
       if (!trip.service.operating(date)) {
         return
       }
 
-      if (!positions) {
-        positions = trip.positions
-      }
+      var prefixedPositions = prefixDates(trip.positions, date)
+      var linestring = toGeoJSON(prefixedPositions)
 
-      var prefixedPositions = prefixDates(positions, date)
-      var featureCollection = geo.toGeoJSON.call(prefixedPositions)
-
-      var object = {
-        _id: date + '_' + trip.id,
-        entities: {
-          route: {
-            id: trip.route.id,
-            longName: trip.route.longName,
-            shortName: trip.route.shortName,
-            color: trip.route.color,
-            textColor: trip.route.textColor,
-            type: trip.route.type
-          },
-          shape: {
-            id: (trip.shape ? trip.shape.id : null)
-          }
+      // some additional information of this trip
+      linestring.properties.trip = {
+        id: date + '_' + trip.id,
+        route: {
+          id: trip.route.id,
+          longName: trip.route.longName,
+          shortName: trip.route.shortName,
+          color: trip.route.color,
+          textColor: trip.route.textColor,
+          type: trip.route.type
         },
-        loc: featureCollection
+        shape: {
+          id: (trip.shape ? trip.shape.id : null)
+        }
       }
 
       if (program.array) {
-        objects.push(object)
+        objects.push(linestring)
       } else {
-        print(object)
+        print(linestring)
       }
 
       if (program.datasets) {
@@ -105,4 +100,24 @@ function prefixDates (positions, date) {
     return position
   })
   return res
+}
+
+function toGeoJSON(points) {
+  var coords = []
+  var times = []
+
+  points.forEach(function (point) {
+    coords.push(toLonLat(point))
+    times.push(point.time.getTime())
+  })
+
+  var linestring = turf.linestring(coords, {
+    time: times
+  })
+
+  return linestring
+}
+
+function toLonLat (point) {
+  return [ point.lon, point.lat ]
 }

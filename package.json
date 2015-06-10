@@ -1,6 +1,6 @@
 {
   "name": "transportation",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha1",
   "description": "Import GTFS into a semantic model",
   "main": "index.js",
   "bin": "./bin/transportation",
@@ -12,7 +12,8 @@
   "keywords": [
     "GTFS",
     "transportation",
-    "transit"
+    "transit",
+    "GeoJSON"
   ],
   "author": "Falco Nogatz <fnogatz@gmail.com>",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "commander": "^2.7.0",
     "concat-stream": "^1.4.6",
     "csv": "^0.4.1",
+    "geobuf": "^0.2.4",
     "moment": "^2.9.0",
     "require-all": "^1.0.0",
     "tconsole": "^0.4.0",

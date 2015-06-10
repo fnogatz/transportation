@@ -7,7 +7,7 @@ Import [GTFS](https://developers.google.com/transit/gtfs/reference) data into a 
 ## Installation
 
 ```shell
-$ npm install transportation
+npm install transportation
 ```
 
 ## Usage
@@ -48,3 +48,21 @@ transportation provides a replacement for node's `console` by using [tconsole](h
 │ 87004 │ 4          │ Grimmelfingen–Kuhberg–Böfingen Süd            │ 590     │
 └───────┴────────────┴───────────────────────────────────────────────┴─────────┘
 ```
+
+## Command Line
+
+```shell
+npm install -g transportation
+```
+
+transportation provides a binary `transportation`. It supports the following commands.
+
+### Export Vehicles' Positions as GeoJSON
+
+Prints all vehicles' positions of a specific date as GeoJSON linestrings:
+
+```shell
+transportation positions /path/to/gtfs/dir
+```
+
+By default multiple trips are simply newline-separated GeoJSON to support streaming. If you want to return a single JSON array use the `--array` flag. Additional options are available via `transportation positions --help`.

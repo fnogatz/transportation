@@ -4,6 +4,6 @@ var program = require('commander')
 
 program
   .version(require('../package.json').version)
-  .command('positions', 'Export positions')
+  .command('positions', "Create newline-separated GeoJSON Features of all the trips' positions")
   .command('shapes', 'Export shapes')
   .parse(process.argv)
