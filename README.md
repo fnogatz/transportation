@@ -59,10 +59,10 @@ transportation provides a binary `transportation`. It supports the following com
 
 ### Export Vehicles' Positions as GeoJSON
 
-Prints all vehicles' positions of a specific date as GeoJSON linestrings:
+Prints all vehicles' positions of a specific date as GeoJSON linestrings with time components:
 
 ```shell
 transportation positions /path/to/gtfs/dir
 ```
 
-By default multiple trips are simply newline-separated GeoJSON to support streaming. If you want to return a single JSON array use the `--array` flag. Additional options are available via `transportation positions --help`.
+By default multiple trips are simply newline-separated GeoJSON to support streaming. If you want to return a single JSON array use the `--array` flag. Additional options are available via `transportation positions --help`. The generated GeoJSON LineString has its `time` property set as an array of timestamps and is therefore compatible with tools like [LeafletPlayback](https://github.com/hallahan/LeafletPlayback) and [others](https://github.com/fnogatz/zeitpunkt#compatible-tools).
