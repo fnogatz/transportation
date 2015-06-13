@@ -22,7 +22,7 @@ program
 var objects = []
 var datasets = program.datasets || null
 program.indentation = program.indentation === undefined ? 0 : program.indentation
-program.date = program.date || new Date().toISOString().slice(0,10) // YYYY-MM-DD
+program.date = program.date || new Date().toISOString().slice(0, 10) // YYYY-MM-DD
 
 var dir = program.args[0]
 var dates = [program.date]
@@ -102,7 +102,7 @@ function prefixDates (positions, date) {
   return res
 }
 
-function toGeoJSON(points) {
+function toGeoJSON (points) {
   var coords = []
   var times = []
 
