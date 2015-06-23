@@ -1,6 +1,6 @@
 {
   "name": "transportation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Import GTFS into a semantic model",
   "main": "index.js",
   "bin": "./bin/transportation",
@@ -11,9 +11,11 @@
   },
   "keywords": [
     "GTFS",
+    "gtfs",
     "transportation",
     "transit",
-    "GeoJSON"
+    "GeoJSON",
+    "geojson"
   ],
   "author": "Falco Nogatz <fnogatz@gmail.com>",
   "license": "MIT",
