@@ -12,8 +12,8 @@ module.exports = {
     b = b && this instanceof Array
     b = b && this.every(function (row) {
         return (row.hasOwnProperty('arrival') &&
-          row.hasOwnProperty('departure') &&
-          row.hasOwnProperty('trip'))
+        row.hasOwnProperty('departure') &&
+        row.hasOwnProperty('trip'))
       })
 
     return b

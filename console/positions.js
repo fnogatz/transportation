@@ -16,10 +16,10 @@ module.exports = {
   ],
   test: function () {
     return (typeof this === 'object' &&
-      this instanceof Array &&
-      allWithProperty(this, 'lon') &&
-      allWithProperty(this, 'lat') &&
-      allWithProperty(this, 'time'))
+    this instanceof Array &&
+    allWithProperty(this, 'lon') &&
+    allWithProperty(this, 'lat') &&
+    allWithProperty(this, 'time'))
   }
 }
 
