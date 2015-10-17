@@ -11,10 +11,10 @@ module.exports = {
     var b = true
     b = b && this instanceof Array
     b = b && this.every(function (row) {
-        return (row.hasOwnProperty('arrival') &&
+      return (row.hasOwnProperty('arrival') &&
         row.hasOwnProperty('departure') &&
         row.hasOwnProperty('trip'))
-      })
+    })
 
     return b
   }
