@@ -29,7 +29,7 @@
     "commander": "^2.7.0",
     "concat-stream": "^1.5.0",
     "csv": "^0.4.5",
-    "geobuf": "^0.2.4",
+    "geobuf": "^1.0.1",
     "moment": "^2.10.6",
     "require-all": "^1.0.0",
     "tconsole": "^1.0.0",
@@ -41,7 +41,7 @@
     "turf-point-on-line": "^1.0.1"
   },
   "devDependencies": {
-    "standard": "^4.5.4",
-    "tap": "^1.3.1"
+    "standard": "^5.3.1",
+    "tap": "^2.1.1"
   }
 }
