@@ -31,7 +31,7 @@
     "csv": "^0.4.5",
     "geobuf": "^1.0.1",
     "moment": "^2.10.6",
-    "require-all": "^1.0.0",
+    "require-all": "^2.0.0",
     "tconsole": "^1.0.0",
     "turf-distance": "^1.0.1",
     "turf-featurecollection": "^1.0.1",
