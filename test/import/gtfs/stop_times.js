@@ -20,7 +20,8 @@ test('import stop_times', function (t) {
         arrival: '06:00:00',
         departure: '06:00:00',
         pickupType: 0,
-        dropoffType: 0
+        dropoffType: 0,
+        stopHeadsign: undefined
       })
 
       t.similar(stopTimes[2], {
@@ -28,7 +29,8 @@ test('import stop_times', function (t) {
         arrival: '06:20:00',
         departure: '06:20:00',
         pickupType: 0,
-        dropoffType: 1
+        dropoffType: 1,
+        stopHeadsign: 'from Here to There'
       })
 
       t.similar(stopTimes[3], {
@@ -36,7 +38,8 @@ test('import stop_times', function (t) {
         arrival: '06:40:00',
         departure: '06:40:00',
         pickupType: 1,
-        dropoffType: 0
+        dropoffType: 0,
+        stopHeadsign: undefined
       })
 
       t.end()
