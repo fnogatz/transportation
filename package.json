@@ -29,7 +29,7 @@
     "commander": "^2.7.0",
     "concat-stream": "^1.5.0",
     "csv": "^0.4.5",
-    "geobuf": "^1.0.1",
+    "geobuf": "^2.0.0",
     "moment": "^2.10.6",
     "require-all": "^2.0.0",
     "tconsole": "^1.0.0",
