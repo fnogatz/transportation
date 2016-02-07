@@ -1,3 +1,4 @@
+var path = require('path')
 var test = require('tap').test
 
 var Transit = require('../../../lib/transit')
@@ -19,7 +20,7 @@ test('import stops', function (t) {
 
   var route = transit.agencies.DTA.routes['AAMV']
 
-  importTrips(__dirname + '/data/generic/trips.txt.small', transit, function onEnd () {
+  importTrips(path.resolve(__dirname, 'data/generic/trips.txt.small'), transit, function onEnd () {
     t.equal(route.trips.length, 1)
 
     t.similar(route.trips['AAMV4'], {

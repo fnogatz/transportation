@@ -1,3 +1,4 @@
+var path = require('path')
 var test = require('tap').test
 
 var Transit = require('../../../lib/transit')
@@ -7,7 +8,7 @@ test('handles optional files', function (t) {
   t.test('missing shapes.txt', function (t) {
     var transit = new Transit()
 
-    importGTFS.call(transit, __dirname + '/data/no-shapes', function (err) {
+    importGTFS.call(transit, path.resolve(__dirname, 'data/no-shapes'), function (err) {
       t.notOk(err)
       t.end()
     })

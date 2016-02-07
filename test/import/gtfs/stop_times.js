@@ -1,3 +1,4 @@
+var path = require('path')
 var test = require('tap').test
 
 var Transit = require('../../../lib/transit')
@@ -11,7 +12,7 @@ test('import stop_times', function (t) {
   var transit = initTransit()
 
   t.test('pickup time', function (t) {
-    importStopTimes(__dirname + '/data/pickup-dropoff-types/stop_times.txt', transit, function onEnd () {
+    importStopTimes(path.resolve(__dirname, 'data/pickup-dropoff-types/stop_times.txt'), transit, function onEnd () {
       var stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
       t.equal(stopTimes.length, 3)
 
@@ -59,7 +60,7 @@ test('warning on malformed stop times', function (t) {
     warnings.push(msg)
   }
 
-  importStopTimes(__dirname + '/data/malformed-stop-times/stop_times.txt', transit, function onEnd () {
+  importStopTimes(path.resolve(__dirname, 'data/malformed-stop-times/stop_times.txt'), transit, function onEnd () {
     var stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
     t.equal(stopTimes.length, 1)
 

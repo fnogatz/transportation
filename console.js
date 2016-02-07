@@ -1,1 +1,2 @@
-module.exports = require('tconsole').load(__dirname + '/console')
+var path = require('path')
+module.exports = require('tconsole').load(path.resolve(__dirname, 'console'))

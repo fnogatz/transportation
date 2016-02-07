@@ -1,3 +1,4 @@
+var path = require('path')
 var test = require('tap').test
 
 var Transit = require('../../../lib/transit')
@@ -12,7 +13,7 @@ test('import routes', function (t) {
   }))
 
   t.test('all fields specified', function (t) {
-    importRoutes(__dirname + '/data/generic/routes.txt', transit, function onEnd () {
+    importRoutes(path.resolve(__dirname, 'data/generic/routes.txt'), transit, function onEnd () {
       testRoutes(transit, t)
 
       t.end()
@@ -26,7 +27,7 @@ test('import routes', function (t) {
       name: 'DTA'
     }))
 
-    importRoutes(__dirname + '/data/no-agencyid-in-routes/routes.txt', transit, function onEnd () {
+    importRoutes(path.resolve(__dirname, 'data/no-agencyid-in-routes/routes.txt'), transit, function onEnd () {
       testRoutes(transit, t)
 
       t.end()

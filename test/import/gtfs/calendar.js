@@ -1,3 +1,4 @@
+var path = require('path')
 var test = require('tap').test
 
 var Transit = require('../../../lib/transit')
@@ -7,7 +8,7 @@ var importCalendar = require('../../../lib/import/gtfs/import.calendar')
 test('import calendar dates', function (t) {
   var transit = new Transit()
 
-  importCalendar(__dirname + '/data/generic/calendar.txt', transit, function onEnd () {
+  importCalendar(path.resolve(__dirname, 'data/generic/calendar.txt'), transit, function onEnd () {
     t.equal(transit.services.length, 2)
 
     t.ok(transit.services['FULLW'])
