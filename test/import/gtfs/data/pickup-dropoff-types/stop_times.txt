@@ -1,4 +1,4 @@
 trip_id,arrival_time,departure_time,stop_id,stop_sequence,stop_headsign,pickup_type,drop_off_type,shape_dist_traveled
 STBA,6:00:00,6:00:00,STAGECOACH,1,,,,
-STBA,6:20:00,6:20:00,STAGECOACH,2,from Here to There,0,1
-STBA,6:40:00,6:40:00,STAGECOACH,3,,1,0
+STBA,6:20:00,6:20:00,STAGECOACH,2,from Here to There,0,1,
+STBA,6:40:00,6:40:00,STAGECOACH,3,,1,0,
