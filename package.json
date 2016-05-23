@@ -38,7 +38,7 @@
     "turf-line-distance": "^1.0.0",
     "turf-linestring": "^1.0.2",
     "turf-point": "^2.0.0",
-    "turf-point-on-line": "^1.0.1"
+    "turf-point-on-line": "^3.0.1"
   },
   "devDependencies": {
     "standard": "^7.0.0",
