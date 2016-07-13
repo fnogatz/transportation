@@ -24,7 +24,7 @@
     "url": "git://github.com/fnogatz/transportation"
   },
   "dependencies": {
-    "async": "^1.5.1",
+    "async": "^2.0.0",
     "char-spinner": "^1.0.1",
     "commander": "^2.7.0",
     "concat-stream": "^1.5.0",
