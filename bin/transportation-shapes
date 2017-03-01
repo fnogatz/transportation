@@ -62,9 +62,6 @@ transit.importGTFS(dir, function (err) {
 
     if (program.datasets) {
       datasets--
-      if (datasets === 0) {
-        return
-      }
     }
   })
 
