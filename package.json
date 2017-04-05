@@ -41,7 +41,7 @@
     "@turf/point-on-line": "^3.0.9"
   },
   "devDependencies": {
-    "standard": "^9.0.0",
+    "standard": "^10.0.0",
     "tap": "^10.3.0"
   }
 }
