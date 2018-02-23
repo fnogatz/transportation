@@ -33,7 +33,7 @@
     "moment": "^2.10.6",
     "require-all": "^2.0.0",
     "tconsole": "^1.0.0",
-    "@turf/distance": "^5.0.0",
+    "@turf/distance": "^6.0.0",
     "turf-featurecollection": "^1.0.1",
     "@turf/length": "^5.0.4",
     "turf-linestring": "^1.0.2",
