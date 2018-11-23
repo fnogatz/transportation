@@ -90,7 +90,7 @@ function initTransit () {
     longName: 'Some Route'
   }), 'STBA')
 
-  transit.route('STBA').trips.add(new Trip({id: 'STBA'}), 'STBA')
+  transit.route('STBA').trips.add(new Trip({ id: 'STBA' }), 'STBA')
 
   ;[
     'STAGECOACH',
