@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "standard": "^12.0.1",
-    "tap": "^12.0.1"
+    "tap": "^13.0.3"
   }
 }
