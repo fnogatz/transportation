@@ -27,7 +27,7 @@
     "async": "^2.6.0",
     "char-spinner": "^1.0.1",
     "commander": "^2.7.0",
-    "concat-stream": "^1.5.0",
+    "concat-stream": "^2.0.0",
     "csv": "^5.0.0",
     "geobuf": "^3.0.0",
     "moment": "^2.10.6",
@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "standard": "^12.0.1",
-    "tap": "^12.0.1"
+    "tap": "^13.0.3"
   }
 }
