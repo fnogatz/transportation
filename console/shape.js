@@ -1,9 +1,11 @@
+var allWithProperty = require('./util').allWithProperty
+
 module.exports = {
   fields: {
     '#': function (i) { return i + 1 },
-    'Lon': function () { return this.lon },
-    'Lat': function () { return this.lat },
-    'Distance': function () { return this.distance }
+    Lon: function () { return this.lon },
+    Lat: function () { return this.lat },
+    Distance: function () { return this.distance }
   },
   defaultFields: [
     'Lon',
@@ -16,10 +18,4 @@ module.exports = {
     allWithProperty(this, 'lat') &&
     !allWithProperty(this, 'time'))
   }
-}
-
-function allWithProperty (arr, prop) {
-  return Array.prototype.every.call(arr, function (el) {
-    return el.hasOwnProperty(prop)
-  })
 }

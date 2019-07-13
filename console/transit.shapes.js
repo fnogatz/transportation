@@ -3,8 +3,8 @@ var tconsole = require('tconsole')
 
 module.exports = {
   fields: {
-    'ID': function () { return this.id },
-    'Points': function () { return this.length }
+    ID: function () { return this.id },
+    Points: function () { return this.length }
   },
   test: function () {
     return this instanceof ShapesList

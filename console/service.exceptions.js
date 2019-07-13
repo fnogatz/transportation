@@ -8,7 +8,7 @@ module.exports = {
   insert: function (table, fields) {
     var exceptions = this
     Object.keys(exceptions).sort().forEach(function addException (date) {
-      var row = [ date, Service.Exception.toString(exceptions[date]) ]
+      var row = [date, Service.Exception.toString(exceptions[date])]
       table.push(row)
     })
   },

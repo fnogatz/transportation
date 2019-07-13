@@ -116,5 +116,5 @@ function toGeoJSON (points) {
 }
 
 function toLonLat (point) {
-  return [ point.lon, point.lat ]
+  return [point.lon, point.lat]
 }

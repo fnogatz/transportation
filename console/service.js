@@ -2,12 +2,12 @@ var Service = require('../lib/service')
 
 module.exports = {
   fields: {
-    'ID': function () { return this.id },
+    ID: function () { return this.id },
     '# Exceptions': function () { return Object.keys(this.exceptions).length },
-    'Exceptions': function () { return getExceptions(this.exceptions) },
-    'Operating': function () { return getOperatingDays(this.days) },
-    'Start': function () { return this.start },
-    'End': function () { return this.end }
+    Exceptions: function () { return getExceptions(this.exceptions) },
+    Operating: function () { return getOperatingDays(this.days) },
+    Start: function () { return this.start },
+    End: function () { return this.end }
   },
   defaultFields: [
     'ID',
