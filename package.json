@@ -7,7 +7,8 @@
   "scripts": {
     "standard": "standard && standard ./bin/*",
     "tap": "tap ./test",
-    "test": "npm run standard && npm run tap"
+    "test": "npm run standard && npm run tap && npm run test-cli",
+    "test-cli": "./bin/transportation --version && ./bin/transportation positions ./test/import/gtfs/data/generic"
   },
   "keywords": [
     "GTFS",
