@@ -11,8 +11,8 @@ test('import calendar dates', function (t) {
   importCalendar(path.resolve(__dirname, 'data/generic/calendar.txt'), transit, function onEnd () {
     t.equal(transit.services.length, 2)
 
-    t.ok(transit.services['FULLW'])
-    t.ok(transit.services['WE'])
+    t.ok(transit.services.FULLW)
+    t.ok(transit.services.WE)
 
     var operating = {
       monday: ['FULLW'],
@@ -34,10 +34,10 @@ test('import calendar dates', function (t) {
       }
     })
 
-    t.equal(transit.services['FULLW'].start, '20070101')
-    t.equal(transit.services['FULLW'].end, '20101231')
-    t.equal(transit.services['WE'].start, '20070101')
-    t.equal(transit.services['WE'].end, '20101231')
+    t.equal(transit.services.FULLW.start, '20070101')
+    t.equal(transit.services.FULLW.end, '20101231')
+    t.equal(transit.services.WE.start, '20070101')
+    t.equal(transit.services.WE.end, '20101231')
 
     t.end()
   })

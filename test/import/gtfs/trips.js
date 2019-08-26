@@ -18,12 +18,12 @@ test('import stops', function (t) {
     longName: 'Some Route'
   }), 'AAMV')
 
-  var route = transit.agencies.DTA.routes['AAMV']
+  var route = transit.agencies.DTA.routes.AAMV
 
   importTrips(path.resolve(__dirname, 'data/generic/trips.txt.small'), transit, function onEnd () {
     t.equal(route.trips.length, 1)
 
-    t.similar(route.trips['AAMV4'], {
+    t.similar(route.trips.AAMV4, {
       headsign: 'to Airport'
     })
 
