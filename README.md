@@ -1,14 +1,12 @@
 # transportation
 
-
-
 Import [GTFS](https://developers.google.com/transit/gtfs/reference) data into a semantic model
 
 ![Screenshot](screenshot.png)
 
 ## Installation
 
-```shell
+```sh
 npm install transportation
 ```
 
@@ -53,7 +51,7 @@ transportation provides a replacement for node's `console` by using [tconsole](h
 
 ## Command Line
 
-```shell
+```sh
 npm install -g transportation
 ```
 
@@ -63,7 +61,7 @@ transportation provides a binary `transportation`. It supports the following com
 
 Prints all vehicles' positions of a specific date as GeoJSON linestrings with time components:
 
-```shell
+```sh
 transportation positions /path/to/gtfs/dir
 ```
 
