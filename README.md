@@ -1,6 +1,6 @@
 # transportation
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fnogatz/transportation.svg)](https://greenkeeper.io/)
+
 
 Import [GTFS](https://developers.google.com/transit/gtfs/reference) data into a semantic model
 
