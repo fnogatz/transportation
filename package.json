@@ -31,7 +31,7 @@
     "concat-stream": "^2.0.0",
     "csv": "^5.1.3",
     "geobuf": "^3.0.0",
-    "moment": "^2.25.0",
+    "moment": "^2.25.1",
     "require-all": "^3.0.0",
     "tconsole": "^1.0.0",
     "@turf/distance": "^6.0.0",
