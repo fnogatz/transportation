@@ -1,12 +1,12 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var importGTFS = require('../../../lib/import/gtfs/index')
+const Transit = require('../../../lib/transit')
+const importGTFS = require('../../../lib/import/gtfs/index')
 
 test('handles optional files', function (t) {
   t.test('missing shapes.txt', function (t) {
-    var transit = new Transit()
+    const transit = new Transit()
 
     importGTFS.call(transit, path.resolve(__dirname, 'data/no-shapes'), function (err) {
       t.notOk(err)
@@ -15,7 +15,7 @@ test('handles optional files', function (t) {
   })
 
   t.test('missing calendar.txt if calendar_times.txt is present', function (t) {
-    var transit = new Transit()
+    const transit = new Transit()
 
     importGTFS.call(transit, path.resolve(__dirname, 'data/no-calendar'), function (err) {
       t.notOk(err)

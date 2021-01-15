@@ -1,4 +1,4 @@
-var allWithProperty = require('./util').allWithProperty
+const allWithProperty = require('./util').allWithProperty
 
 module.exports = {
   fields: {

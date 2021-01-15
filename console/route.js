@@ -1,4 +1,4 @@
-var Route = require('../lib/route')
+const Route = require('../lib/route')
 
 module.exports = {
   fields: {

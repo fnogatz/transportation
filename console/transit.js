@@ -1,4 +1,4 @@
-var Transit = require('../lib/transit')
+const Transit = require('../lib/transit')
 
 module.exports = {
   fields: {

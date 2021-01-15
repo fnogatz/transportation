@@ -1,4 +1,4 @@
-var Agency = require('../lib/agency')
+const Agency = require('../lib/agency')
 
 module.exports = {
   fields: {

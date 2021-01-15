@@ -1,12 +1,12 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var Agency = require('../../../lib/agency')
-var importRoutes = require('../../../lib/import/gtfs/import.routes')
+const Transit = require('../../../lib/transit')
+const Agency = require('../../../lib/agency')
+const importRoutes = require('../../../lib/import/gtfs/import.routes')
 
 test('import routes', function (t) {
-  var transit = new Transit()
+  const transit = new Transit()
   transit.agencies.add(new Agency({
     id: 'DTA',
     name: 'DTA'
@@ -21,7 +21,7 @@ test('import routes', function (t) {
   })
 
   t.test('no agency ID specified', function (t) {
-    var transit = new Transit()
+    const transit = new Transit()
     transit.agencies.add(new Agency({
       id: 'DTA',
       name: 'DTA'

@@ -1,4 +1,4 @@
-var StopTime = require('../lib/stop_time')
+const StopTime = require('../lib/stop_time')
 
 module.exports = {
   fields: {
@@ -8,7 +8,7 @@ module.exports = {
     Departure: function () { return StopTime.prettyTime(this.departure) }
   },
   test: function () {
-    var b = true
+    let b = true
     b = b && this instanceof Array
     b = b && this.every(function (row) {
       return (typeof row.arrival !== 'undefined' &&

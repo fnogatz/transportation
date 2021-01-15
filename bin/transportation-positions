@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var spinner = require('char-spinner')
-var program = require('commander')
-var moment = require('moment')
-var geobuf = require('geobuf')
-var Transit = require('../index')
-var turf = require('../lib/utils/turf')
+const spinner = require('char-spinner')
+const program = require('commander')
+const moment = require('moment')
+const geobuf = require('geobuf')
+const Transit = require('../index')
+const turf = require('../lib/utils/turf')
 
 spinner()
 
@@ -19,17 +19,17 @@ program
   .option('-i, --indentation <spaces>', 'Set indentation level (default: 0)', parseInt)
   .parse(process.argv)
 
-var objects = []
-var datasets = program.datasets || null
+const objects = []
+let datasets = program.datasets || null
 program.indentation = program.indentation === undefined ? 0 : program.indentation
 program.date = program.date || new Date().toISOString().slice(0, 10) // YYYY-MM-DD
 
-var dir = program.args[0]
-var dates = [program.date]
+const dir = program.args[0]
+const dates = [program.date]
 
 function print (obj) {
   if (program.geobuf) {
-    var buf = geobuf.featureToGeobuf(obj)
+    const buf = geobuf.featureToGeobuf(obj)
     process.stdout.write(buf.encode().toBuffer())
     return
   }
@@ -37,13 +37,13 @@ function print (obj) {
   console.log(JSON.stringify(obj, null, Array(program.indentation + 1).join(' ')))
 }
 
-var transit = new Transit()
+const transit = new Transit()
 transit.importGTFS(dir, function (err) {
   if (err) {
     throw err
   }
 
-  var trips = transit.trips
+  const trips = transit.trips
   trips.forEach(function (trip) {
     if (program.datasets && datasets === 0) {
       return
@@ -54,8 +54,8 @@ transit.importGTFS(dir, function (err) {
         return
       }
 
-      var prefixedPositions = prefixDates(trip.positions, date)
-      var linestring = toGeoJSON(prefixedPositions)
+      const prefixedPositions = prefixDates(trip.positions, date)
+      const linestring = toGeoJSON(prefixedPositions)
 
       // some additional information of this trip
       linestring.properties.trip = {
@@ -91,8 +91,8 @@ transit.importGTFS(dir, function (err) {
 })
 
 function prefixDates (positions, date) {
-  var res = positions.map(function (position) {
-    var dateStr = moment(date).format('YYYY-MM-DD') + ' ' + position.time
+  const res = positions.map(function (position) {
+    const dateStr = moment(date).format('YYYY-MM-DD') + ' ' + position.time
     position.time = new Date(dateStr)
     return position
   })
@@ -100,15 +100,15 @@ function prefixDates (positions, date) {
 }
 
 function toGeoJSON (points) {
-  var coords = []
-  var times = []
+  const coords = []
+  const times = []
 
   points.forEach(function (point) {
     coords.push(toLonLat(point))
     times.push(point.time.getTime())
   })
 
-  var linestring = turf.linestring(coords, {
+  const linestring = turf.linestring(coords, {
     time: times
   })
 

@@ -1,6 +1,6 @@
-var test = require('tap').test
+const test = require('tap').test
 
-var Transit = require('../lib/transit')
+const Transit = require('../lib/transit')
 
 test('creation', function (t) {
   Transit()
@@ -9,9 +9,9 @@ test('creation', function (t) {
 })
 
 test('Transit.prototype.importGTFS', function (t) {
-  var transit = new Transit()
+  const transit = new Transit()
 
-  var importGTFS = transit.importGTFS
+  const importGTFS = transit.importGTFS
   t.type(importGTFS, 'function')
 
   t.end()

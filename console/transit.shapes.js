@@ -1,5 +1,5 @@
-var ShapesList = require('../lib/list.shape')
-var tconsole = require('tconsole')
+const ShapesList = require('../lib/list.shape')
+const tconsole = require('tconsole')
 
 module.exports = {
   fields: {

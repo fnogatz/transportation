@@ -1,4 +1,4 @@
-var Trip = require('../lib/trip')
+const Trip = require('../lib/trip')
 
 module.exports = {
   fields: {

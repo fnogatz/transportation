@@ -1,4 +1,4 @@
-var StopTime = require('../lib/stop_time')
+const StopTime = require('../lib/stop_time')
 
 module.exports = {
   fields: {

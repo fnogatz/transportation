@@ -1,4 +1,4 @@
-var Service = require('../lib/service')
+const Service = require('../lib/service')
 
 module.exports = {
   defaultFields: [
@@ -6,9 +6,9 @@ module.exports = {
     'Exception'
   ],
   insert: function (table, fields) {
-    var exceptions = this
+    const exceptions = this
     Object.keys(exceptions).sort().forEach(function addException (date) {
-      var row = [date, Service.Exception.toString(exceptions[date])]
+      const row = [date, Service.Exception.toString(exceptions[date])]
       table.push(row)
     })
   },

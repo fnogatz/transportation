@@ -1,4 +1,4 @@
-var Stop = require('../lib/stop')
+const Stop = require('../lib/stop')
 
 module.exports = {
   fields: {

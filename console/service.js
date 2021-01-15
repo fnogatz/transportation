@@ -1,4 +1,4 @@
-var Service = require('../lib/service')
+const Service = require('../lib/service')
 
 module.exports = {
   fields: {
@@ -27,8 +27,8 @@ function getExceptions (exceptions) {
 }
 
 function getOperatingDays (days) {
-  var operatingDays = []
-  for (var day in days) {
+  const operatingDays = []
+  for (const day in days) {
     if (days[day] === Service.Status.Operating) {
       operatingDays.push(capitalize(day))
     }

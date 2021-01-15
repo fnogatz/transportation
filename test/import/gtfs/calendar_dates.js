@@ -1,12 +1,12 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var Service = require('../../../lib/service')
-var importCalendarDates = require('../../../lib/import/gtfs/import.calendar_dates')
+const Transit = require('../../../lib/transit')
+const Service = require('../../../lib/service')
+const importCalendarDates = require('../../../lib/import/gtfs/import.calendar_dates')
 
 test('import calendar dates', function (t) {
-  var transit = new Transit()
+  const transit = new Transit()
 
   importCalendarDates(path.resolve(__dirname, 'data/generic/calendar_dates.txt'), transit, function onEnd () {
     t.equal(transit.services.length, 1)

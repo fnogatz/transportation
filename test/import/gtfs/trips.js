@@ -1,13 +1,13 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var Agency = require('../../../lib/agency')
-var Route = require('../../../lib/route')
-var importTrips = require('../../../lib/import/gtfs/import.trips')
+const Transit = require('../../../lib/transit')
+const Agency = require('../../../lib/agency')
+const Route = require('../../../lib/route')
+const importTrips = require('../../../lib/import/gtfs/import.trips')
 
 test('import stops', function (t) {
-  var transit = new Transit()
+  const transit = new Transit()
 
   transit.agencies.add(new Agency({
     id: 'DTA',
@@ -18,7 +18,7 @@ test('import stops', function (t) {
     longName: 'Some Route'
   }), 'AAMV')
 
-  var route = transit.agencies.DTA.routes.AAMV
+  const route = transit.agencies.DTA.routes.AAMV
 
   importTrips(path.resolve(__dirname, 'data/generic/trips.txt.small'), transit, function onEnd () {
     t.equal(route.trips.length, 1)

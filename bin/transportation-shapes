@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-var spinner = require('char-spinner')
-var program = require('commander')
-var Transit = require('../index')
-var turf = require('../lib/utils/turf')
-var geo = require('../lib/utils/geo')
+const spinner = require('char-spinner')
+const program = require('commander')
+const Transit = require('../index')
+const turf = require('../lib/utils/turf')
+const geo = require('../lib/utils/geo')
 
 spinner()
 
@@ -15,41 +15,37 @@ program
   .option('-i, --indentation <spaces>', 'Set indentation level (default: 2)', parseInt)
   .parse(process.argv)
 
-var dir = program.args[0]
+const dir = program.args[0]
 
-if (program.array) {
-  var objects = []
-}
-if (program.datasets) {
-  var datasets = program.datasets
-}
+const objects = []
+let datasets = program.datasets
 if (program.indentation === undefined) {
   program.indentation = 2
 }
 
 function print (obj) {
-  var stringify = JSON.stringify
+  const stringify = JSON.stringify
 
   console.log(stringify(obj, null, Array(program.indentation + 1).join(' ')))
 }
 
-var transit = new Transit()
+const transit = new Transit()
 transit.importGTFS(dir, function (err) {
   if (err) {
     throw err
   }
 
-  var shapes = transit.shapes
+  const shapes = transit.shapes
   shapes.forEach(function (shape) {
     if (program.datasets && datasets === 0) {
       return
     }
 
-    var linestring = turf.linestring(shape.map(function (position) {
+    const linestring = turf.linestring(shape.map(function (position) {
       return geo.toLonLat(position)
     }))
 
-    var object = {
+    const object = {
       _id: shape.id,
       loc: linestring
     }

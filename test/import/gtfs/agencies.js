@@ -1,11 +1,11 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var importAgencies = require('../../../lib/import/gtfs/import.agency')
+const Transit = require('../../../lib/transit')
+const importAgencies = require('../../../lib/import/gtfs/import.agency')
 
 test('import agency', function (t) {
-  var transit = new Transit()
+  const transit = new Transit()
 
   importAgencies(path.resolve(__dirname, 'data/generic/agency.txt'), transit, function onEnd () {
     t.equal(transit.agencies.length, 1)

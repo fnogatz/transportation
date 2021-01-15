@@ -1,19 +1,19 @@
-var path = require('path')
-var test = require('tap').test
+const path = require('path')
+const test = require('tap').test
 
-var Transit = require('../../../lib/transit')
-var Agency = require('../../../lib/agency')
-var Route = require('../../../lib/route')
-var Trip = require('../../../lib/trip')
-var Stop = require('../../../lib/stop')
-var importStopTimes = require('../../../lib/import/gtfs/import.stop_times')
+const Transit = require('../../../lib/transit')
+const Agency = require('../../../lib/agency')
+const Route = require('../../../lib/route')
+const Trip = require('../../../lib/trip')
+const Stop = require('../../../lib/stop')
+const importStopTimes = require('../../../lib/import/gtfs/import.stop_times')
 
 test('import stop_times', function (t) {
-  var transit = initTransit()
+  const transit = initTransit()
 
   t.test('pickup time', function (t) {
     importStopTimes(path.resolve(__dirname, 'data/pickup-dropoff-types/stop_times.txt'), transit, function onEnd () {
-      var stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
+      const stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
       t.equal(stopTimes.length, 3)
 
       t.similar(stopTimes[1], {
@@ -51,9 +51,9 @@ test('import stop_times', function (t) {
 })
 
 test('warning on malformed stop times', function (t) {
-  var transit = initTransit()
+  const transit = initTransit()
 
-  var warnings = []
+  const warnings = []
 
   // catch console.warn calls
   console.warn = function (msg) {
@@ -61,7 +61,7 @@ test('warning on malformed stop times', function (t) {
   }
 
   importStopTimes(path.resolve(__dirname, 'data/malformed-stop-times/stop_times.txt'), transit, function onEnd () {
-    var stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
+    const stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
     t.equal(stopTimes.length, 1)
 
     t.similar(stopTimes[1], {
@@ -79,7 +79,7 @@ test('warning on malformed stop times', function (t) {
 })
 
 function initTransit () {
-  var transit = new Transit()
+  const transit = new Transit()
 
   transit.agencies.add(new Agency({
     id: 'DTA',
