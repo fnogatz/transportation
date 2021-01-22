@@ -1,6 +1,6 @@
 {
   "name": "transportation",
-  "version": "1.2.33",
+  "version": "1.2.34",
   "description": "Import GTFS into a semantic model",
   "main": "index.js",
   "bin": {
