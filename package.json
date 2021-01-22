@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@turf/distance": "^6.3.0",
-    "@turf/length": "^6.2.0",
+    "@turf/length": "^6.3.0",
     "@turf/nearest-point-on-line": "^6.3.0",
     "async": "^3.0.1",
     "char-spinner": "^1.0.1",
