@@ -34,7 +34,7 @@
     "char-spinner": "^1.0.1",
     "commander": "^5.1.0",
     "concat-stream": "^2.0.0",
-    "csv": "^5.1.3",
+    "csv": "^5.4.0",
     "geobuf": "^3.0.2",
     "moment": "^2.29.1",
     "require-all": "^3.0.0",
