@@ -12,7 +12,7 @@ test('import stops', function (t) {
 
     t.ok(transit.stops.FUR_CREEK_RES)
 
-    t.similar(transit.stops.FUR_CREEK_RES, {
+    t.match(transit.stops.FUR_CREEK_RES, {
       name: 'Furnace Creek Resort (Demo)',
       id: 'FUR_CREEK_RES',
       lon: -117.133162,

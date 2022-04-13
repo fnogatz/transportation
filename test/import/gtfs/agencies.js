@@ -10,7 +10,7 @@ test('import agency', function (t) {
   importAgencies(path.resolve(__dirname, 'data/generic/agency.txt'), transit, function onEnd () {
     t.equal(transit.agencies.length, 1)
     t.ok(transit.agencies.DTA)
-    t.similar(transit.agencies.DTA, {
+    t.match(transit.agencies.DTA, {
       id: 'DTA',
       name: 'Demo Transit Authority',
       url: 'http://google.com',

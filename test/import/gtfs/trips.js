@@ -23,7 +23,7 @@ test('import stops', function (t) {
   importTrips(path.resolve(__dirname, 'data/generic/trips.txt.small'), transit, function onEnd () {
     t.equal(route.trips.length, 1)
 
-    t.similar(route.trips.AAMV4, {
+    t.match(route.trips.AAMV4, {
       headsign: 'to Airport'
     })
 

@@ -16,7 +16,7 @@ test('import stop_times', function (t) {
       const stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
       t.equal(stopTimes.length, 3)
 
-      t.similar(stopTimes[1], {
+      t.match(stopTimes[1], {
         id: 1,
         arrival: '06:00:00',
         departure: '06:00:00',
@@ -25,7 +25,7 @@ test('import stop_times', function (t) {
         stopHeadsign: undefined
       })
 
-      t.similar(stopTimes[2], {
+      t.match(stopTimes[2], {
         id: 2,
         arrival: '06:20:00',
         departure: '06:20:00',
@@ -34,7 +34,7 @@ test('import stop_times', function (t) {
         stopHeadsign: 'from Here to There'
       })
 
-      t.similar(stopTimes[3], {
+      t.match(stopTimes[3], {
         id: 3,
         arrival: '06:40:00',
         departure: '06:40:00',
@@ -64,7 +64,7 @@ test('warning on malformed stop times', function (t) {
     const stopTimes = transit.agencies.DTA.routes.STBA.trips.STBA.stops
     t.equal(stopTimes.length, 1)
 
-    t.similar(stopTimes[1], {
+    t.match(stopTimes[1], {
       id: 1,
       arrival: '06:00:00',
       departure: '06:00:00',

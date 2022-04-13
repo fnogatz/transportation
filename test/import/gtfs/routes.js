@@ -45,7 +45,7 @@ test('import routes', function (t) {
     t.ok(transit.agencies.DTA.routes.CITY)
     t.ok(transit.agencies.DTA.routes.AAMV)
 
-    t.similar(transit.agencies.DTA.routes.AB, {
+    t.match(transit.agencies.DTA.routes.AB, {
       shortName: 10,
       longName: 'Airport - Bullfrog'
     })
